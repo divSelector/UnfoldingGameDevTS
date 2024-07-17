@@ -52,7 +52,7 @@ function handleCollision(this: Player, normal: vmath.vector3, distance: number) 
 		}
 	}
 
-	if (Math.abs(normal) > 0) this.velocity.x = 0;
+	if (Math.abs(normal.x) > 0) this.velocity.x = 0;
 
 	// on the ground
 	if (normal.y > 0) {
@@ -77,7 +77,7 @@ export function on_message(this: Player, messageId: hash, message: Message) {
 
 export function fixed_update(this: Player, dt: number) {
 	this.velocity.y = this.velocity.y - gravity * dt;
-	this.velocity.y = clamp(this.velocity.y, -2000, 20000);
+	this.velocity.y = clamp(this.velocity.y, -2000, 2000);
 
 	if (this.grounded) this.velocity.y = 0;
 
